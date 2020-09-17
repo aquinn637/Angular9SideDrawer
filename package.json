@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@angular-devkit/schematics": "^10.1.2",
-    "@angular/compiler-cli": "~8.2.0",
+    "@angular/compiler-cli": "^8.2.14",
     "@ngtools/webpack": "^9.1.12",
     "nativescript-dev-webpack": "~1.5.0",
     "typescript": "~3.5.3"
