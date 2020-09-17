@@ -3,6 +3,7 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { HomeModule } from "./home/home.module";
 
 @NgModule({
     bootstrap: [
@@ -11,7 +12,8 @@ import { AppComponent } from "./app.component";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule,
+        HomeModule
     ],
     declarations: [
         AppComponent

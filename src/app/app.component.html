@@ -1,1 +1,9 @@
-<page-router-outlet></page-router-outlet>
+<RadSideDrawer [gesturesEnabled]="false">
+
+    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+        <ns-side-drawer></ns-side-drawer>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent></page-router-outlet>
+
+</RadSideDrawer>
