@@ -20,8 +20,9 @@
     "@angular/platform-browser": "~9.1.12",
     "@angular/platform-browser-dynamic": "~9.1.12",
     "@angular/router": "~9.1.12",
+    "@nativescript/angular": "^9.0.0",
+    "@nativescript/core": "^6.5.18",
     "@nativescript/theme": "~2.3.0",
-    "nativescript-angular": "~8.21.0",
     "nativescript-ui-sidedrawer": "^8.0.1",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.4.0",
@@ -37,5 +38,9 @@
     "typescript": "~3.8.3"
   },
   "gitHead": "20a65d338ae8f8911087ab6615b89363f864b07b",
-  "readme": "NativeScript Application"
+  "readme": "NativeScript Application",
+  "scripts": {
+    "ngcc": "ngcc --properties es2015 module main --first-only",
+    "postinstall": "npm run ngcc"
+  }
 }
