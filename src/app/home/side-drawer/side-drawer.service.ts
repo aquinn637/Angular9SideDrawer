@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { NavigationStart, Router, RouterEvent } from '@angular/router';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
-import * as app from 'tns-core-modules/application';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SideDrawerService {
 
-    constructor(private router: Router) {
+    drawer: RadSideDrawer;
+
+    constructor(private router: Router, private ngZone: NgZone) {
 
         this.router.events.subscribe((event: RouterEvent) => {
             if (event instanceof NavigationStart) {
@@ -19,26 +20,26 @@ export class SideDrawerService {
     }
 
     public showSideDrawer(): void {
-        const sideDrawer: RadSideDrawer = app.getRootView() as RadSideDrawer;
-        sideDrawer.showDrawer();
+        this.drawer.showDrawer();
     }
 
     public closeDrawer(callback?: Function): void {
 
-        const sideDrawer: RadSideDrawer = app.getRootView() as RadSideDrawer;
-
-        if (sideDrawer == null || !sideDrawer.getIsOpen()) {
+        if (this.drawer == null || !this.drawer.getIsOpen()) {
             return;
         }
 
         if (callback != null) {
-            callback = zonedCallback(callback);
-            sideDrawer.once(RadSideDrawer.drawerClosingEvent, () => {
-                callback();
+          this.drawer.once(RadSideDrawer.drawerClosingEvent, () => {
+              if (callback) {
+                this.ngZone.run(() => {
+                  callback();
+                });
+              }
             });
         }
 
-        sideDrawer.closeDrawer();
+        this.drawer.closeDrawer();
     }
 
 }
