@@ -1,9 +1,11 @@
-<RadSideDrawer [gesturesEnabled]="false">
+<RadSideDrawer [gesturesEnabled]="false" (loaded)="loadedDrawer($event)">
 
-    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+    <GridLayout tkDrawerContent rows="auto,*" class="sidedrawer sidedrawer-left">
         <ns-side-drawer></ns-side-drawer>
     </GridLayout>
 
-    <page-router-outlet tkMainContent></page-router-outlet>
+    <GridLayout tkMainContent>
+      <page-router-outlet></page-router-outlet>
+    </GridLayout>
 
 </RadSideDrawer>
